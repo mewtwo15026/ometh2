@@ -24,13 +24,12 @@ public:
 		node<card> *current;
 		for (int suit = 3; suit >= 0; suit--) {
 			for (int face = 13; face >= 0; face--) {
-				if (old == nullptr){
+				if (old == NULL){
 					current = new node<card>(card(suit, face));
 				} else {
 					old = current;
 					current = new node<card>(card(suit,face), old);
 				} // end ifelse
-
 			} // end for
 		} // end for
 		head = current;
@@ -39,8 +38,11 @@ public:
 	friend ostream& operator << (ostream& ostr, card& card)
 	{
 		node<card> *car = head;
-
-
+		while(head != NULL)
+		{
+			ostr << *car << endl;
+			car = car->next;
+		}
 		return ostr;
 	} // end operator <<
 
